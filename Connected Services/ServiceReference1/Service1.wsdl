@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:17670/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:17670/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:17670/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfNumberConverter_lab.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsersRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersRequests" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsersRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_checkIfUserExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:checkIfUserExists" />
+  </wsdl:message>
+  <wsdl:message name="IService1_checkIfUserExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:checkIfUserExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_checkIfUserExistsBool_InputMessage">
+    <wsdl:part name="parameters" element="tns:checkIfUserExistsBool" />
+  </wsdl:message>
+  <wsdl:message name="IService1_checkIfUserExistsBool_OutputMessage">
+    <wsdl:part name="parameters" element="tns:checkIfUserExistsBoolResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUserRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUserRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ArabicToRoman_InputMessage">
+    <wsdl:part name="parameters" element="tns:ArabicToRoman" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ArabicToRoman_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ArabicToRomanResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsers" message="tns:IService1_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersResponse" message="tns:IService1_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsersRequests" message="tns:IService1_GetUsersRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersRequestsResponse" message="tns:IService1_GetUsersRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUser" message="tns:IService1_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUserResponse" message="tns:IService1_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddRequest" message="tns:IService1_AddRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddRequestResponse" message="tns:IService1_AddRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkIfUserExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkIfUserExists" message="tns:IService1_checkIfUserExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkIfUserExistsResponse" message="tns:IService1_checkIfUserExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkIfUserExistsBool">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkIfUserExistsBool" message="tns:IService1_checkIfUserExistsBool_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkIfUserExistsBoolResponse" message="tns:IService1_checkIfUserExistsBool_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUserRequest" message="tns:IService1_AddUserRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUserRequestResponse" message="tns:IService1_AddUserRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ArabicToRoman">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ArabicToRoman" message="tns:IService1_ArabicToRoman_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ArabicToRomanResponse" message="tns:IService1_ArabicToRoman_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersRequests">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUsersRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkIfUserExists">
+      <soap:operation soapAction="http://tempuri.org/IService1/checkIfUserExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkIfUserExistsBool">
+      <soap:operation soapAction="http://tempuri.org/IService1/checkIfUserExistsBool" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddUserRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArabicToRoman">
+      <soap:operation soapAction="http://tempuri.org/IService1/ArabicToRoman" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:17670/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
