@@ -2,52 +2,54 @@
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Managers;
 using System;
-using System.Collections.Generic;
 using System.Reflection.Emit;
+using System.Windows;
 using System.Windows.Input;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
 {
     internal class MainViewModel : BaseViewModel
     {
-        private int _arabNum;
-        private string _romeNum;
-        private string _date;
-        private string _RomanNum;
-        public Label RomanNum = new Label();
+        private string _arabNumber;
+        private string _romanNumber;
+        private DateTime _date;
+        public Label RomanNumber = new Label();
 
         private ICommand _convertCoommand;
-        private ICommand _resCoommand;
 
-        public int ArabNum
+        public string ArabNumber
         {
-            get { return _arabNum; }
+            get { return _arabNumber; }
             set
             {
-                _arabNum = value;
+                _arabNumber = value;
                 OnPropertyChanged();
             }
         }
 
-        
+        public int ArabNumberInt
+        {
+            get { return int.Parse(ArabNumber); }
+
+        }
+
 
         public string RomeNum
         {
-            get { return _romeNum; }
+            get { return _romanNumber; }
             set
             {
-                _romeNum = value;
+                _romanNumber = value;
                 OnPropertyChanged();
             }
         }
 
-        public string Date
+        public DateTime Date
         {
             get { return _date; }
             set
             {
-                _date = DateTime.Now.ToString(@"MM\/dd\/yyyy h\:mm tt");
+                _date = DateTime.Now;
                 OnPropertyChanged();
             }
         }
@@ -61,49 +63,14 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
             }
         }
 
-
-        public ICommand ResCoommand
-        {
-            get
-            {
-                return _resCoommand ?? (_resCoommand =
-                           new RelayCommand<object>(Convert));
-            }
-        }
-
-
-        private async void Result(object obj)
-        {
-            //var user = StationManager.CurrentUser;
-            string rNumber = StationManager.DataStorage.CalculateNumber(_arabNum);
-
-           // var textContainer = TextContainerProp.GetValue(tb);
-
-            var rqs = new Request(_arabNum, rNumber, _date);
-            StationManager.DataStorage.CalculateAndSave(_arabNum, rqs);
-
-        }
-
-        private string _numValue = "";
-        public string NumericValue
-        {
-            get { return _numValue; }
-            set
-            {
-                _numValue = StationManager.DataStorage.CalculateNumber(_arabNum);;
-                OnPropertyChanged("NumericValue");
-            }
-        }
-
         private async void Convert(object obj)
         {
-             
-        //var user = StationManager.CurrentUser;
-        string rNumber = StationManager.DataStorage.CalculateNumber(_arabNum);
+            string userLogin = StationManager.CurrentUser.Login;
+            User userCur = StationManager.DataStorage.GetUserByLogin(userLogin);
 
-            var rqs = new Request(_arabNum, rNumber, _date);
-            StationManager.DataStorage.CalculateAndSave(_arabNum, rqs);
-            
+            StationManager.DataStorage.CalculateAndSave(ArabNumberInt, userCur);
+
+            MessageBox.Show("Wrote");
 
         }
 
@@ -115,7 +82,5 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
             }
         }
 
-
-        
     }
 }

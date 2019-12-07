@@ -79,11 +79,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="checkIfUserExistsByLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="checkIfUserExistsByLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfNumberConverter_lab.Models" minOccurs="0" name="checkIfUserExistsByLoginResult" nillable="true" type="q6:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddUserRequest">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfNumberConverter_lab.Models" minOccurs="0" name="req" nillable="true" type="q6:Request" />
+        <xs:element minOccurs="0" name="ArabNumber" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

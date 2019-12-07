@@ -8,14 +8,10 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
 
         User GetUserByPasswordLogin(string login, string password);
 
+        User GetUserByLogin(string login);
+
         void AddUser(User user);
+        void CalculateAndSave(int arab, User user);
 
-        // void AddRequest(Request req,string login);
-
-        void CalculateAndSave(int arab, Request req);
-
-        string CalculateNumber(int arab);
-
-
-}
+    }
 }

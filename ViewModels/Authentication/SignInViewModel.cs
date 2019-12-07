@@ -98,8 +98,6 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels.Authent
                  }*/
                 currentUser = StationManager.DataStorage.GetUserByPasswordLogin(_login, _password);
                 if (currentUser == null)
-
-
                 {
                     MessageBox.Show(
                         $"Sign In failed fo user {_login}. Reason:{Environment.NewLine}User does not exist.");

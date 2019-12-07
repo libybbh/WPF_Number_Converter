@@ -164,10 +164,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double ArabicNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountField;
+        private int ArabNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid IdField;
@@ -176,7 +173,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         private string RomanNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TimeField;
+        private System.DateTime TimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User UsersRequestsField;
@@ -192,27 +189,14 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double ArabicNumber {
+        public int ArabNumber {
             get {
-                return this.ArabicNumberField;
+                return this.ArabNumberField;
             }
             set {
-                if ((this.ArabicNumberField.Equals(value) != true)) {
-                    this.ArabicNumberField = value;
-                    this.RaisePropertyChanged("ArabicNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Count {
-            get {
-                return this.CountField;
-            }
-            set {
-                if ((this.CountField.Equals(value) != true)) {
-                    this.CountField = value;
-                    this.RaisePropertyChanged("Count");
+                if ((this.ArabNumberField.Equals(value) != true)) {
+                    this.ArabNumberField = value;
+                    this.RaisePropertyChanged("ArabNumber");
                 }
             }
         }
@@ -244,12 +228,12 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Time {
+        public System.DateTime Time {
             get {
                 return this.TimeField;
             }
             set {
-                if ((object.ReferenceEquals(this.TimeField, value) != true)) {
+                if ((this.TimeField.Equals(value) != true)) {
                     this.TimeField = value;
                     this.RaisePropertyChanged("Time");
                 }
@@ -319,11 +303,17 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkIfUserExistsBool", ReplyAction="http://tempuri.org/IService1/checkIfUserExistsBoolResponse")]
         System.Threading.Tasks.Task<bool> checkIfUserExistsBoolAsync(string login, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUserRequest", ReplyAction="http://tempuri.org/IService1/AddUserRequestResponse")]
-        void AddUserRequest(string login, KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkIfUserExistsByLogin", ReplyAction="http://tempuri.org/IService1/checkIfUserExistsByLoginResponse")]
+        KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User checkIfUserExistsByLogin(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkIfUserExistsByLogin", ReplyAction="http://tempuri.org/IService1/checkIfUserExistsByLoginResponse")]
+        System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User> checkIfUserExistsByLoginAsync(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUserRequest", ReplyAction="http://tempuri.org/IService1/AddUserRequestResponse")]
-        System.Threading.Tasks.Task AddUserRequestAsync(string login, KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req);
+        void AddUserRequest(string login, int ArabNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUserRequest", ReplyAction="http://tempuri.org/IService1/AddUserRequestResponse")]
+        System.Threading.Tasks.Task AddUserRequestAsync(string login, int ArabNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ArabicToRoman", ReplyAction="http://tempuri.org/IService1/ArabicToRomanResponse")]
         string ArabicToRoman(int arabic);
@@ -407,12 +397,20 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
             return base.Channel.checkIfUserExistsBoolAsync(login, password);
         }
         
-        public void AddUserRequest(string login, KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req) {
-            base.Channel.AddUserRequest(login, req);
+        public KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User checkIfUserExistsByLogin(string login) {
+            return base.Channel.checkIfUserExistsByLogin(login);
         }
         
-        public System.Threading.Tasks.Task AddUserRequestAsync(string login, KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req) {
-            return base.Channel.AddUserRequestAsync(login, req);
+        public System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User> checkIfUserExistsByLoginAsync(string login) {
+            return base.Channel.checkIfUserExistsByLoginAsync(login);
+        }
+        
+        public void AddUserRequest(string login, int ArabNumber) {
+            base.Channel.AddUserRequest(login, ArabNumber);
+        }
+        
+        public System.Threading.Tasks.Task AddUserRequestAsync(string login, int ArabNumber) {
+            return base.Channel.AddUserRequestAsync(login, ArabNumber);
         }
         
         public string ArabicToRoman(int arabic) {

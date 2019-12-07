@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
 {
     class Request
     {
         #region Fields
-     //   private Guid _id;
-        private string _date;
-        private int _numToCon;
-        private String _numAfterCon;
+        private DateTime _date;
+        private int _arabNumber;
+        private String _romanNumber;
         #endregion
 
         #region Properties
-      //  public Guid ID { get; set; }
 
-        internal String Time
+        internal DateTime Time
         {
             get
             {
@@ -26,45 +20,43 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
             }
             private set
             {
-                _date = DateTime.Now.ToString(@"MM\/dd\/yyyy h\:mm tt");
+                _date = DateTime.Now;
 
             }
         }
 
-        internal string NumAfterCon
+        internal string RomanNumber
         {
             get
             {
-                return _numAfterCon;
+                return _romanNumber;
             }
             private set
             {
-                _numAfterCon = value;
+                _romanNumber = value;
             }
         }
 
-        internal  int NumToCon
+        internal  int ArabNumber
         {
             get
             {
-                return _numToCon;
+                return _arabNumber;
             }
             private set
             {
-                _numToCon = value;
+                _arabNumber = value;
             }
         }
 
         #region Constructor
 
-        public Request(int numToCon, string numAfterCon, string date)
+        public Request(int arabNumber, string romanNumber, DateTime date)
         {
-           // _id = Guid.NewGuid();
-            _numToCon = numToCon;
-            _numAfterCon = numAfterCon;
+            _arabNumber = arabNumber;
+            _romanNumber = romanNumber;
             _date = date;
-          
-          
+
         }
         #endregion
 

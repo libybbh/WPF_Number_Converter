@@ -43,6 +43,12 @@
   <wsdl:message name="IService1_checkIfUserExistsBool_OutputMessage">
     <wsdl:part name="parameters" element="tns:checkIfUserExistsBoolResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_checkIfUserExistsByLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:checkIfUserExistsByLogin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_checkIfUserExistsByLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:checkIfUserExistsByLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_AddUserRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUserRequest" />
   </wsdl:message>
@@ -79,6 +85,10 @@
     <wsdl:operation name="checkIfUserExistsBool">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkIfUserExistsBool" message="tns:IService1_checkIfUserExistsBool_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkIfUserExistsBoolResponse" message="tns:IService1_checkIfUserExistsBool_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkIfUserExistsByLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkIfUserExistsByLogin" message="tns:IService1_checkIfUserExistsByLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkIfUserExistsByLoginResponse" message="tns:IService1_checkIfUserExistsByLogin_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddUserRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUserRequest" message="tns:IService1_AddUserRequest_InputMessage" />
@@ -138,6 +148,15 @@
     </wsdl:operation>
     <wsdl:operation name="checkIfUserExistsBool">
       <soap:operation soapAction="http://tempuri.org/IService1/checkIfUserExistsBool" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkIfUserExistsByLogin">
+      <soap:operation soapAction="http://tempuri.org/IService1/checkIfUserExistsByLogin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

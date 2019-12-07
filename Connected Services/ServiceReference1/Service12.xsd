@@ -27,11 +27,10 @@
   <xs:element name="ArrayOfRequest" nillable="true" type="tns:ArrayOfRequest" />
   <xs:complexType name="Request">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ArabicNumber" type="xs:double" />
-      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="ArabNumber" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
       <xs:element minOccurs="0" name="RomanNumber" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
       <xs:element minOccurs="0" name="UsersRequests" nillable="true" type="tns:User" />
     </xs:sequence>
   </xs:complexType>

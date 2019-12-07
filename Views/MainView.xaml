@@ -8,7 +8,7 @@
     
     <Grid>
         <Label x:Name="RomanNum" HorizontalAlignment="Left" Content="{Binding NumericValue}" Foreground="{Binding NumericValue,  Mode=OneWay}" Height="23" Margin="170,23,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="ArabicNum" HorizontalAlignment="Left" Text="{Binding ArabNum, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumericOnly" Height="23" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ArabicNum" HorizontalAlignment="Left" Text="{Binding ArabNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumericOnly" Height="23" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Command="{Binding ConvertCoommand}" Margin="112,64,0,0" VerticalAlignment="Top" Width="75" Height="18"/>
         <Label Content="ArabicL" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.737,0.615"/>
         <Label Content="RomanL" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.211,0.538"/>
