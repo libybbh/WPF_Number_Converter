@@ -25,12 +25,6 @@
   <wsdl:message name="IService1_AddUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_AddRequest_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddRequest" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddRequest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddRequestResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_checkIfUserExists_InputMessage">
     <wsdl:part name="parameters" element="tns:checkIfUserExists" />
   </wsdl:message>
@@ -73,10 +67,6 @@
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUser" message="tns:IService1_AddUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUserResponse" message="tns:IService1_AddUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddRequest" message="tns:IService1_AddRequest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddRequestResponse" message="tns:IService1_AddRequest_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="checkIfUserExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkIfUserExists" message="tns:IService1_checkIfUserExists_InputMessage" />
@@ -121,15 +111,6 @@
     </wsdl:operation>
     <wsdl:operation name="AddUser">
       <soap:operation soapAction="http://tempuri.org/IService1/AddUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddRequest">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

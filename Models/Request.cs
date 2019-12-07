@@ -18,7 +18,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
             {
                 return _date;
             }
-            private set
+            set
             {
                 _date = DateTime.Now;
 
@@ -31,7 +31,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
             {
                 return _romanNumber;
             }
-            private set
+            set
             {
                 _romanNumber = value;
             }
@@ -43,7 +43,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
             {
                 return _arabNumber;
             }
-            private set
+            set
             {
                 _arabNumber = value;
             }
@@ -51,6 +51,10 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
 
         #region Constructor
 
+        public Request()
+        {
+            
+        }
         public Request(int arabNumber, string romanNumber, DateTime date)
         {
             _arabNumber = arabNumber;

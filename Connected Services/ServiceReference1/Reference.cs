@@ -274,22 +274,16 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User[]> GetUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsersRequests", ReplyAction="http://tempuri.org/IService1/GetUsersRequestsResponse")]
-        KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[] GetUsersRequests();
+        KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[] GetUsersRequests(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsersRequests", ReplyAction="http://tempuri.org/IService1/GetUsersRequestsResponse")]
-        System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[]> GetUsersRequestsAsync();
+        System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[]> GetUsersRequestsAsync(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUser", ReplyAction="http://tempuri.org/IService1/AddUserResponse")]
         void AddUser(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User usr);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUser", ReplyAction="http://tempuri.org/IService1/AddUserResponse")]
         System.Threading.Tasks.Task AddUserAsync(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User usr);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddRequest", ReplyAction="http://tempuri.org/IService1/AddRequestResponse")]
-        void AddRequest(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddRequest", ReplyAction="http://tempuri.org/IService1/AddRequestResponse")]
-        System.Threading.Tasks.Task AddRequestAsync(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkIfUserExists", ReplyAction="http://tempuri.org/IService1/checkIfUserExistsResponse")]
         KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User checkIfUserExists(string login, string password);
@@ -310,10 +304,10 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User> checkIfUserExistsByLoginAsync(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUserRequest", ReplyAction="http://tempuri.org/IService1/AddUserRequestResponse")]
-        void AddUserRequest(string login, int ArabNumber);
+        string AddUserRequest(string login, int ArabNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUserRequest", ReplyAction="http://tempuri.org/IService1/AddUserRequestResponse")]
-        System.Threading.Tasks.Task AddUserRequestAsync(string login, int ArabNumber);
+        System.Threading.Tasks.Task<string> AddUserRequestAsync(string login, int ArabNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ArabicToRoman", ReplyAction="http://tempuri.org/IService1/ArabicToRomanResponse")]
         string ArabicToRoman(int arabic);
@@ -357,12 +351,12 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
             return base.Channel.GetUsersAsync();
         }
         
-        public KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[] GetUsersRequests() {
-            return base.Channel.GetUsersRequests();
+        public KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[] GetUsersRequests(string login) {
+            return base.Channel.GetUsersRequests(login);
         }
         
-        public System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[]> GetUsersRequestsAsync() {
-            return base.Channel.GetUsersRequestsAsync();
+        public System.Threading.Tasks.Task<KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request[]> GetUsersRequestsAsync(string login) {
+            return base.Channel.GetUsersRequestsAsync(login);
         }
         
         public void AddUser(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User usr) {
@@ -371,14 +365,6 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
         
         public System.Threading.Tasks.Task AddUserAsync(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User usr) {
             return base.Channel.AddUserAsync(usr);
-        }
-        
-        public void AddRequest(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req) {
-            base.Channel.AddRequest(req);
-        }
-        
-        public System.Threading.Tasks.Task AddRequestAsync(KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.Request req) {
-            return base.Channel.AddRequestAsync(req);
         }
         
         public KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1.User checkIfUserExists(string login, string password) {
@@ -405,11 +391,11 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ServiceReference1 
             return base.Channel.checkIfUserExistsByLoginAsync(login);
         }
         
-        public void AddUserRequest(string login, int ArabNumber) {
-            base.Channel.AddUserRequest(login, ArabNumber);
+        public string AddUserRequest(string login, int ArabNumber) {
+            return base.Channel.AddUserRequest(login, ArabNumber);
         }
         
-        public System.Threading.Tasks.Task AddUserRequestAsync(string login, int ArabNumber) {
+        public System.Threading.Tasks.Task<string> AddUserRequestAsync(string login, int ArabNumber) {
             return base.Channel.AddUserRequestAsync(login, ArabNumber);
         }
         

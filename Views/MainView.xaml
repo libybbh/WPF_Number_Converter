@@ -5,14 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <Grid>
-        <Label x:Name="RomanNum" HorizontalAlignment="Left" Content="{Binding NumericValue}" Foreground="{Binding NumericValue,  Mode=OneWay}" Height="23" Margin="170,23,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="RomanNum" HorizontalAlignment="Left" Text="{Binding Shirt, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="170,23,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="ArabicNum" HorizontalAlignment="Left" Text="{Binding ArabNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumericOnly" Height="23" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Command="{Binding ConvertCoommand}" Margin="112,64,0,0" VerticalAlignment="Top" Width="75" Height="18"/>
         <Label Content="ArabicL" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.737,0.615"/>
         <Label Content="RomanL" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.211,0.538"/>
         <TextBlock Margin="98,97,102,179" Text="{Binding CurrentUser, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
+        <ListView HorizontalAlignment="Left" Height="203" Margin="0,97,0,0" VerticalAlignment="Top" Width="300">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  Header="Name" Width="80" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn  Header="Matches" Width="15" DisplayMemberBinding="{Binding Matches}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </UserControl>

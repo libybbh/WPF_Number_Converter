@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models;
 
 namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
@@ -9,20 +12,21 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
 
         public void AddUser(User user)
         {
-            try { 
+            try
+            {
 
-            User usr = new User(user.FirstName, user.LastName, user.Email,user.Login, user.Password);
-            ServiceReference1.User usr1 = new ServiceReference1.User();
+                User usr = new User(user.FirstName, user.LastName, user.Email, user.Login, user.Password);
+                ServiceReference1.User usr1 = new ServiceReference1.User();
 
-            usr1.Name = usr.FirstName;
-            usr1.Surname = usr.LastName;
-            usr1.Email = usr.Email;
-            usr1.Login = usr.Login;
-            usr1.Password = usr.Password;
+                usr1.Name = usr.FirstName;
+                usr1.Surname = usr.LastName;
+                usr1.Email = usr.Email;
+                usr1.Login = usr.Login;
+                usr1.Password = usr.Password;
 
-            sr.AddUser(usr1);
+                sr.AddUser(usr1);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.Write(ex);
             }
@@ -41,6 +45,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
             }
             catch (Exception e)
             {
+                Console.Write(e);
                 return null;
             }
         }
@@ -59,6 +64,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
             }
             catch (Exception e)
             {
+                Console.Write(e);
                 return null;
             }
         }
@@ -66,29 +72,72 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
 
         public bool UserExists(string login, string password)
         {
-                return sr.checkIfUserExistsBool(login,password);
+            return sr.checkIfUserExistsBool(login, password);
 
-            }
+        }
 
-            public void CalculateAndSave(int arab, User user) {
+        public string CalculateAndSave(int arab, User user)
+        {
 
-            try
-            {
-                Request reqs = new Request(arab," ", DateTime.Now);//client request
-                ServiceReference1.Request req1 = new ServiceReference1.Request();//server request
+            //try
+            //{
+            Request reqs = new Request(arab, " ", DateTime.Now);//client request
+            ServiceReference1.Request req1 = new ServiceReference1.Request();//server request
 
-                req1.ArabNumber= reqs.ArabNumber;
-                req1.RomanNumber = reqs.RomanNumber;
-                req1.Time = reqs.Time;
+            /*req1.ArabNumber= reqs.ArabNumber;
+            req1.RomanNumber = reqs.RomanNumber;
+            req1.Time = reqs.Time;*/
 
-                sr.AddUserRequest(user.Login, arab);
+            string romanFinal = sr.AddUserRequest(user.Login, arab);
+
+            reqs.ArabNumber = req1.ArabNumber;
+            reqs.RomanNumber = req1.RomanNumber;
+            reqs.Time = req1.Time;
+            return romanFinal;
+            // }
+
+            // catch (Exception ex)
+            // { 
+            // Console.Write(ex);
+            // }
+        }
+
+        public ObservableCollection<Request> GetHistoryByLogin(string login)
+        {
+            try {
+                ObservableCollection<Request> requestList = new ObservableCollection <Request>();
+
+                ServiceReference1.Service1Client server = new ServiceReference1.Service1Client();
+                
+                foreach (var r in sr.GetUsersRequests(login))
+                {
+                    //Request reqClient = new Request(0, " ", DateTime.Now);
+                    Request reqClient = new Request();
+                    reqClient.ArabNumber = r.ArabNumber;
+                    reqClient.RomanNumber = r.RomanNumber;
+                    reqClient.Time = r.Time;
+                    requestList.Add(reqClient);
+                }
+
+                ObservableCollection<Request> historyList = new ObservableCollection<Request>();
+
+                foreach (var item in requestList)
+                {
+                    historyList.Add(new Request(item.ArabNumber, item.RomanNumber, item.Time));
+                }
+
+                return historyList;
             }
             catch (Exception ex)
             {
-                Console.Write(ex);
+                System.Diagnostics.Debug.WriteLine(ex);
+                return null;
             }
         }
+
+
+
     }
-    }
-    
+}
+
 

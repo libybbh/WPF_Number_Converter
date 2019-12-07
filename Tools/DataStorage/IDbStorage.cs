@@ -1,4 +1,5 @@
 ﻿using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models;
+using System.Collections.ObjectModel;
 
 namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
 {
@@ -11,7 +12,8 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
         User GetUserByLogin(string login);
 
         void AddUser(User user);
-        void CalculateAndSave(int arab, User user);
+        string CalculateAndSave(int arab, User user);
 
+        ObservableCollection<Request> GetHistoryByLogin(string login);
     }
 }

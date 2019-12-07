@@ -10,9 +10,10 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window,IContentOwner
+    public partial class MainWindow : Window, IContentOwner
     {
-        public ContentControl ContentControl {
+        public ContentControl ContentControl
+        {
             get { return _contentControl; }
         }
 
