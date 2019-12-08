@@ -15,5 +15,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
         string CalculateAndSave(int arab, User user);
 
         ObservableCollection<Request> GetHistoryByLogin(string login);
+
+        string EncodePasswordToBase64(string password);
     }
 }

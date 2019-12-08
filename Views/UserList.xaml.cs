@@ -27,5 +27,10 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Views
             InitializeComponent();
             DataContext = new UserListViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

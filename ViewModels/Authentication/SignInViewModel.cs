@@ -35,10 +35,10 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels.Authent
         }
         public string Password
         {
-            get { return _password; }
+            get { return StationManager.DataStorage.EncodePasswordToBase64(_password); }
             set
             {
-                _password = value;
+                _password = StationManager.DataStorage.EncodePasswordToBase64(value);
                 OnPropertyChanged();
             }
         }
@@ -84,18 +84,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels.Authent
             {
                 Thread.Sleep(1000);
                 User currentUser;
-                /* try
-                 {
 
-                     currentUser = StationManager.DataStorage.GetUserByPasswordLogin(_login,_password);
-                 }
-                 catch (Exception ex)
-                 {
-                     MessageBox.Show(
-                         $"Sign In failed fo user {_login}. Reason:{Environment.NewLine}User does not exist.");
-                     // MessageBox.Show($"Sign In failed fo user {_login}. Reason:{Environment.NewLine}{ex.Message}");
-                     return false;
-                 }*/
                 currentUser = StationManager.DataStorage.GetUserByPasswordLogin(_login, _password);
                 if (currentUser == null)
                 {

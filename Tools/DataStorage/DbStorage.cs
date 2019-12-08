@@ -118,7 +118,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
             }
 
 
-        public static string EncodePasswordToBase64(string password)
+        public string EncodePasswordToBase64(string password)
         {
             byte[] bytes = Encoding.Unicode.GetBytes(password);
             byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);

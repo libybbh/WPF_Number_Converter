@@ -34,7 +34,6 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
 
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void _UpdateField<T>(ref T field, T newValue, string propertyName = null)
         {
@@ -100,13 +99,13 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
         }
 
 
-    public string CurrentUser
+    /*public string CurrentUser
         {
             get
             {
                 return $"Current User {StationManager.CurrentUser}";
             }
-        }
+        }*/
 
     }
 }
