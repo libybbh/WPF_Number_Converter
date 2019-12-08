@@ -9,9 +9,9 @@
     <Grid>
         <TextBlock x:Name="RomanNum" HorizontalAlignment="Left" Text="{Binding Shirt, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="170,23,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="ArabicNum" HorizontalAlignment="Left" Text="{Binding ArabNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumericOnly" Height="23" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Command="{Binding ConvertCommand}" Margin="112,64,0,0" VerticalAlignment="Top" Width="75" Height="18"/>
-        <Label Content="ArabicL" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.737,0.615"/>
-        <Label Content="RomanL" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.211,0.538"/>
+        <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Command="{Binding ConvertCommand}" Margin="148,82,0,0" VerticalAlignment="Top" Width="75" Height="18"/>
+        <Label Content="Arabic" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.737,0.615"/>
+        <Label Content="Roman" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.211,0.538"/>
         <TextBlock Margin="98,97,102,179" Text="{Binding CurrentUser, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="BtnToHistory" Content="See History" HorizontalAlignment="Left" Command="{Binding ToHistoryCommand}" Margin="148,126,0,0" VerticalAlignment="Top" Width="75" Height="18"/>
 
