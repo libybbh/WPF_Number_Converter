@@ -4,9 +4,7 @@ using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Managers;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Navigation;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -16,15 +14,10 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
     internal class MainViewModel : BaseViewModel
     {
         private string _arabNumber;
-        private string _romanNumber;
         private DateTime _date;
         private ICommand _convertCoommand;
         private RelayCommand<object> _historyCommand;
-
-
-        private ICommand _toHistoryCommand;
-       
-
+            
         public string ArabNumber
         {
             get { return _arabNumber; }
@@ -40,8 +33,6 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
             get { return int.Parse(ArabNumber); }
 
         }
-
-       
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -81,29 +72,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
 
             MessageBox.Show(romanFinal);
 
-            StationManager.UserHistoryList = StationManager.DataStorage.GetHistoryByLogin(userLogin);
-
-            //  _label = romanFinal;
-            //ObservableCollection<Request> requests = new ObservableCollection<Request>();
-
-
-            //MessageBox.Show("" + StationManager.DataStorage.GetHistoryByLogin(userLogin));
-
-            //NavigationManager.Instance.Navigate(ViewType.Main);
-
-
         }
-
-
-     /*   public ICommand ToHistoryCommand
-        {
-            get
-            {
-                return _toHistoryCommand ?? (_toHistoryCommand =
-                           new RelayCommand<object>(GoToHistory));
-            }
-        }*/
-
 
         private async void GoToHistory(object obj)
         {
@@ -112,13 +81,12 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
             await Task.Run(() =>
             {
                 string userLogin = StationManager.CurrentUser.Login;
-             //   StationManager.UserHistoryList = StationManager.DataStorage.GetHistoryByLogin(userLogin);
+                StationManager.UserHistoryList = StationManager.DataStorage.GetHistoryByLogin(userLogin);
 
 
             });
             LoaderManager.Instance.HideLoader();
             NavigationManager.Instance.Navigate(ViewType.UserList);
-
 
         }
 
@@ -129,9 +97,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
                 return _historyCommand ?? (_historyCommand = new RelayCommand<object>(GoToHistory));
             }
 
-
         }
-
 
 
     public string CurrentUser
@@ -141,8 +107,6 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
                 return $"Current User {StationManager.CurrentUser}";
             }
         }
-
-
 
     }
 }

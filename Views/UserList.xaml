@@ -6,33 +6,15 @@
       xmlns:local="clr-namespace:KMA.ProgrammingInCSharp2019.Practice6.Serialization.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
-
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="7*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <Button Grid.Column="3" Grid.Row="0" Content="Вийти" HorizontalAlignment="Right" Height="38" VerticalAlignment="Center" FontSize="20"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2CA3E0" Command="{Binding SignOutCommand}" Margin="0,10,33.333,8" />
-
-        <DataGrid ItemsSource="{Binding Requests, Mode=OneWay}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" IsReadOnly="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ArabNumber" Binding="{Binding ArabNumber}"></DataGridTextColumn>
-                <DataGridTextColumn Header="RomanNumber" Binding="{Binding RomanNumber}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Date" Binding="{Binding Time}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <Button Grid.Column="4" Grid.Row="4" Content="Назад" HorizontalAlignment="Right" Height="38" VerticalAlignment="Center" FontSize="20"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2CA3E0" Command="{Binding GoBackCommand}" Margin="0,10,33.333,8" />
+        <TextBlock FontSize="15"
+           FontWeight="SemiBold"
+           Foreground="Black"
+           Text="{Binding HistoryText}" Margin="0,10,330,10"/>
+        <Viewbox HorizontalAlignment="Left" Height="100" Margin="522,125,0,0" VerticalAlignment="Top" Width="147" Stretch="Fill">
+            <Button Content="Exit" Command="{Binding SignOutCommand}" RenderTransformOrigin="2.231,0.13" Height="100" Width="147"/>
+        </Viewbox>
+        <Button Content="Back" HorizontalAlignment="Left" Height="95" Command="{Binding GoBackCommand}" Margin="522,287,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.551,0.516"/>
 
     </Grid>
 </UserControl>

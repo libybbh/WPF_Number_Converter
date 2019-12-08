@@ -20,7 +20,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
             }
             set
             {
-                _date = DateTime.Now;
+                _date = value;
 
             }
         }
@@ -65,5 +65,11 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models
         #endregion
 
         #endregion
+
+        public override string ToString()
+        {
+            return "Request: Arabic Number = " + ArabNumber + "; Roman = " + RomanNumber + "; Date = " + Time.ToString() + "\n";
+        }
     }
-}
+    }
+

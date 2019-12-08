@@ -2,61 +2,32 @@
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Managers;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Navigation;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
 {
     class UserListViewModel: BaseViewModel
     {
 
-        private int _arabNumber;
-        private string _romanNumber;
-
-        private DateTime _time;
-
         private RelayCommand<object> _signOutCommand;
         private RelayCommand<object> _goBackCommand;
 
         public ObservableCollection<Request> _requests;
 
-        internal UserListViewModel()
-        {
-            _requests = StationManager.UserHistoryList;
-            MessageBox.Show("worked"+ _requests);
-        }
-        public int ArabNumber
-        {
-            get { return _arabNumber; }
-            set { _arabNumber = value; }
-        }
-        public string RomanNumber
-        {
-            get { return _romanNumber; }
-            set { _romanNumber = value; }
-        }
 
-        public DateTime Time
-        {
-            get { return _time; }
-            set { _time = value; }
-        }
+        public string HistoryText { get; set; }
 
-        public ObservableCollection<Request> Requests
+        public UserListViewModel()
         {
-            get { return _requests; }
-            set
+            _requests = new ObservableCollection<Request>(StationManager.UserHistoryList);
+
+            foreach (var r in _requests)
             {
-                _requests = value;
-                OnPropertyChanged();
+                HistoryText += r.ToString();
             }
-        }
 
+
+        }
         public RelayCommand<object> SignOutCommand
         {
             get
