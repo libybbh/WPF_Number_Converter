@@ -1,4 +1,5 @@
 ﻿using System;
+using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Views;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Views.Authentication;
 using MainView = KMA.ProgrammingInCSharp2019.Practice6.Serialization.Views.MainView;
 using SignUpView = KMA.ProgrammingInCSharp2019.Practice6.Serialization.Views.Authentication.SignUpView;
@@ -24,6 +25,9 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Navigation
                     break;
                 case ViewType.Main:
                     ViewsDictionary.Add(viewType, new MainView());
+                    break;
+                case ViewType.UserList:
+                    ViewsDictionary.Add(viewType, new UserList());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(viewType), viewType, null);

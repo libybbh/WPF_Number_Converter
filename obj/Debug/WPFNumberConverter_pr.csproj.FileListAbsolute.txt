@@ -48,3 +48,5 @@ D:\Sharp\WpfPart\WPF_Number_Converter\obj\Debug\KMA.ProgrammingInCSharp2019.Prac
 D:\Sharp\WpfPart\WPF_Number_Converter\obj\Debug\WPFNumberConverter_pr.csproj.GenerateResource.cache
 D:\Sharp\WpfPart\WPF_Number_Converter\obj\Debug\WPFNumberConverter_pr.exe
 D:\Sharp\WpfPart\WPF_Number_Converter\obj\Debug\WPFNumberConverter_pr.pdb
+D:\Sharp\WpfPart\WPF_Number_Converter\obj\Debug\Views\UserList.g.cs
+D:\Sharp\WpfPart\WPF_Number_Converter\obj\Debug\Views\UserList.baml

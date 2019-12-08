@@ -107,8 +107,8 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
             try {
                 ObservableCollection<Request> requestList = new ObservableCollection <Request>();
 
-                ServiceReference1.Service1Client server = new ServiceReference1.Service1Client();
-                
+               // ICollection<Request> requestList = server.GetUsersRequests(login);
+
                 foreach (var r in sr.GetUsersRequests(login))
                 {
                     //Request reqClient = new Request(0, " ", DateTime.Now);
@@ -134,9 +134,6 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage
                 return null;
             }
         }
-
-
-
     }
 }
 

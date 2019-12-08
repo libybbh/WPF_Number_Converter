@@ -19,9 +19,12 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
         private string _romanNumber;
         private DateTime _date;
         private ICommand _convertCoommand;
-        private string _label;
+        private RelayCommand<object> _historyCommand;
 
+
+        private ICommand _toHistoryCommand;
        
+
         public string ArabNumber
         {
             get { return _arabNumber; }
@@ -38,23 +41,7 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
 
         }
 
-        public string Shirt
-        {
-            /* get { return $"Current User {StationManager.CurrentUser}"; }
-             set {
-                 _label = value;
-                 OnPropertyChanged();
-             }
-            // _UpdateField(ref _label, value);*/
-            get
-            {
-                return $"Current User {StationManager.CurrentUser}";
-            }
-            set
-            {
-               _label = $"User {StationManager.CurrentUser}";
-            }
-        }
+       
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -70,14 +57,13 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
         public DateTime Date
         {
             get { return _date; }
-            set
-            {
+            set{
                 _date = DateTime.Now;
                 OnPropertyChanged();
             }
         }
 
-        public ICommand ConvertCoommand
+        public ICommand ConvertCommand
         {
             get
             {
@@ -94,9 +80,11 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
             string romanFinal = StationManager.DataStorage.CalculateAndSave(ArabNumberInt, userCur);
 
             MessageBox.Show(romanFinal);
-            
-            _label = romanFinal;
-            ObservableCollection<Request> requests = new ObservableCollection<Request>();
+
+            StationManager.UserHistoryList = StationManager.DataStorage.GetHistoryByLogin(userLogin);
+
+            //  _label = romanFinal;
+            //ObservableCollection<Request> requests = new ObservableCollection<Request>();
 
 
             //MessageBox.Show("" + StationManager.DataStorage.GetHistoryByLogin(userLogin));
@@ -106,7 +94,47 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
 
         }
 
-        public string CurrentUser
+
+     /*   public ICommand ToHistoryCommand
+        {
+            get
+            {
+                return _toHistoryCommand ?? (_toHistoryCommand =
+                           new RelayCommand<object>(GoToHistory));
+            }
+        }*/
+
+
+        private async void GoToHistory(object obj)
+        {
+
+            LoaderManager.Instance.ShowLoader();
+            await Task.Run(() =>
+            {
+                string userLogin = StationManager.CurrentUser.Login;
+             //   StationManager.UserHistoryList = StationManager.DataStorage.GetHistoryByLogin(userLogin);
+
+
+            });
+            LoaderManager.Instance.HideLoader();
+            NavigationManager.Instance.Navigate(ViewType.UserList);
+
+
+        }
+
+        public RelayCommand<object> ToHistoryCommand
+        {
+            get
+            {
+                return _historyCommand ?? (_historyCommand = new RelayCommand<object>(GoToHistory));
+            }
+
+
+        }
+
+
+
+    public string CurrentUser
         {
             get
             {

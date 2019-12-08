@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Models;
 using KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.DataStorage;
@@ -10,6 +11,8 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Managers
         private static IDbStorage _dataStorage;
 
         internal static User CurrentUser { get; set; }
+
+        internal static ObservableCollection<Request> UserHistoryList { get; set; }
 
         internal static IDbStorage DataStorage
         {
