@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
 {
-    class UserListViewModel: BaseViewModel
+    class UserListViewModel : BaseViewModel
     {
 
         private RelayCommand<object> _signOutCommand;

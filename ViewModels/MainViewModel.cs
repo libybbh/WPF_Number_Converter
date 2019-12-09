@@ -48,7 +48,8 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
         public DateTime Date
         {
             get { return _date; }
-            set{
+            set
+            {
                 _date = DateTime.Now;
                 OnPropertyChanged();
             }
@@ -118,13 +119,13 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
         }
 
 
-    /*public string CurrentUser
-        {
-            get
+        /*public string CurrentUser
             {
-                return $"Current User {StationManager.CurrentUser}";
-            }
-        }*/
+                get
+                {
+                    return $"Current User {StationManager.CurrentUser}";
+                }
+            }*/
 
     }
 }
