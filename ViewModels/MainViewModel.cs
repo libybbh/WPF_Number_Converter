@@ -17,7 +17,8 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
         private DateTime _date;
         private ICommand _convertCoommand;
         private RelayCommand<object> _historyCommand;
-            
+        private RelayCommand<object> _signOutCommand;
+
         public string ArabNumber
         {
             get { return _arabNumber; }
@@ -61,6 +62,24 @@ namespace KMA.ProgrammingInCSharp2019.Practice6.Serialization.ViewModels
                            new RelayCommand<object>(Convert));
             }
         }
+
+
+        public RelayCommand<object> SignOutCommand
+        {
+            get
+            {
+                return _signOutCommand ?? (_signOutCommand = new RelayCommand<object>(
+                           o =>
+                           {
+                               StationManager.CurrentUser = null;
+                               StationManager.UserHistoryList = null;
+                               NavigationManager.Instance.Navigate(ViewType.SignIn);
+                           }));
+            }
+        }
+
+
+
 
         private async void Convert(object obj)
         {

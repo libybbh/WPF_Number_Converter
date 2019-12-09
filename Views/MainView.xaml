@@ -2,15 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:KMA.ProgrammingInCSharp2019.Practice6.Serialization.Tools.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBox x:Name="ArabicNum" HorizontalAlignment="Left" Text="{Binding ArabNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="NumericOnly" Height="23" Margin="78,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="BtnCalculate" Content="Calculate" HorizontalAlignment="Left" Command="{Binding ConvertCommand}" Margin="148,82,0,0" VerticalAlignment="Top" Width="75" Height="18"/>
-        <Label Content="Arabic" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.737,0.615"/>
-        <TextBlock Margin="98,97,102,179" Text="{Binding CurrentUser, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="BtnToHistory" Content="See History" HorizontalAlignment="Left" Command="{Binding ToHistoryCommand}" Margin="148,126,0,0" VerticalAlignment="Top" Width="75" Height="18"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:LabelAndTextControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ArabNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+        Caption="ArabNumber" Margin="10" Grid.RowSpan="2"></controls:LabelAndTextControl>
 
+        <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"  Grid.ColumnSpan="2" Content="Convert" Command="{Binding ConvertCommand}"/>
+        <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Grid.ColumnSpan="2" Content="See History" Command="{Binding ToHistoryCommand}"/>
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Content="Exit" Command="{Binding SignOutCommand}"/>
     </Grid>
 </UserControl>
